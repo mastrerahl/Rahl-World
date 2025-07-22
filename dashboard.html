@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – Rahl LinkUp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="dashboard-container">
+    <h2>👋 Welcome to Rahl LinkUp</h2>
+    <p id="welcome-message">Loading...</p><section class="dashboard-actions">
+  <a href="post-job.html" class="btn-primary">Post a Job</a>
+  <a href="search.html" class="btn-secondary">Search for Workers</a>
+  <a href="global-jobs.html" class="btn-secondary">Find Jobs Abroad</a>
+</section>
+
+<button id="logout-btn" class="btn-danger">Logout</button>
+
+  </main>  <script src="firebase-config.js"></script>  <script>
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const uid = user.uid;
+      const doc = await firebase.firestore().collection('users').doc(uid).get();
+      const data = doc.data();
+
+      document.getElementById('welcome-message').innerText =
+        `Logged in as ${data.fullname} (${data.role})`;
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      firebase.auth().signOut().then(() => {
+        window.location.href = 'login.html';
+      });
+    });
+  </script></body>
+</html>
