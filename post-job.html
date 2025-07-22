@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Job – Rahl LinkUp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="form-container">
+    <h2>📝 Post a Job</h2>
+    <form id="job-form">
+      <label for="title">Job Title</label>
+      <input type="text" id="title" required /><label for="description">Job Description</label>
+  <textarea id="description" required></textarea>
+
+  <label for="location">Location</label>
+  <input type="text" id="location" required />
+
+  <label for="country">Country</label>
+  <input type="text" id="country" required />
+
+  <label for="contact">Contact (Phone/WhatsApp)</label>
+  <input type="text" id="contact" required />
+
+  <button type="submit" class="btn-primary">Post Job</button>
+</form>
+<p><a href="dashboard.html">⬅️ Back to Dashboard</a></p>
+
+  </main>  <script>
+    const jobForm = document.getElementById('job-form');
+    jobForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alert('Job posted (this will save to Firebase once connected).');
+      jobForm.reset();
+    });
+  </script></body>
+</html>
