@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Jobs – Rahl LinkUp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="form-container">
+    <h2>🌍 Jobs Abroad</h2>
+    <form id="global-search">
+      <label for="from-country">You are from:</label>
+      <input type="text" id="from-country" required /><label for="to-country">Looking for jobs in:</label>
+  <input type="text" id="to-country" required />
+
+  <label for="job-type">Job Type (optional)</label>
+  <input type="text" id="job-type" />
+
+  <button type="submit" class="btn-primary">Search</button>
+</form>
+
+<section id="global-results" class="results-section">
+  <!-- Results will appear here -->
+</section>
+
+<p><a href="dashboard.html">⬅️ Back to Dashboard</a></p>
+
+  </main>  <script>
+    const globalSearch = document.getElementById('global-search');
+    const globalResults = document.getElementById('global-results');
+
+    globalSearch.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const fromCountry = document.getElementById('from-country').value;
+      const toCountry = document.getElementById('to-country').value;
+      const jobType = document.getElementById('job-type').value || 'Any';
+
+      // This will be replaced with Firebase/Database queries later
+      globalResults.innerHTML = `
+        <div class="card">
+          <h3>🧳 ${jobType} Job in ${toCountry}</h3>
+          <p>🌍 For applicants from: ${fromCountry}</p>
+          <p>📩 Contact: <a href="https://wa.me/1234567890">WhatsApp Recruiter</a></p>
+        </div>
+      `;
+    });
+  </script></body>
+</html>
